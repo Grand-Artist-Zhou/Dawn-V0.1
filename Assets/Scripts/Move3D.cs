@@ -4,30 +4,52 @@ using UnityEngine;
 
 public class Move3D : MonoBehaviour
 {
-    private Rigidbody Rigidbody;
+    private CharacterController controller;
+    private Animator animator;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    public float playerSpeed = 2.0f;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
 
-    private float hAxis;
-    private float vAxis;
-    public float speed;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Rigidbody = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        hAxis = Input.GetAxis("Horizontal");
-        vAxis = Input.GetAxis("Vertical");
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-		{
-            Rigidbody.AddForce(Vector3.up * speed * Time.deltaTime);
-		}
+        float hAxis = Input.GetAxis("Horizontal");
+        float vAxis = Input.GetAxis("Vertical");
 
-		Rigidbody.AddForce(Vector3.forward * vAxis * speed * Time.deltaTime);
-		Rigidbody.AddForce(Vector3.right * hAxis * speed * Time.deltaTime);
-	}
+        Vector3 move = new Vector3(hAxis, 0, vAxis);
+        controller.Move(move * Time.deltaTime * playerSpeed);
+
+		// Contorl the animation parts
+		if (hAxis <= 0) animator.SetTrigger("walkLeft");
+        else if (hAxis > 0) animator.SetTrigger("walkRight");
+        else if (vAxis <= 0) animator.SetTrigger("walkBack");
+        else animator.SetTrigger("walkForward");
+
+        if (move != Vector3.zero)
+        {
+            transform.forward = move;
+        }
+
+        // Changes the height position of the player..
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
 }
