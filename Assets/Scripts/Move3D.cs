@@ -27,10 +27,7 @@ public class Move3D : MonoBehaviour
             Rigidbody.AddForce(Vector3.up * speed * Time.deltaTime);
 		}
 
-        /*Rigidbody.AddForce(Vector3.forward * vAxis * speed * Time.deltaTime);
-        Rigidbody.AddForce(Vector3.right * hAxis * speed * Time.deltaTime);*/
-
-		transform.Translate(Vector3.forward * vAxis * speed * Time.deltaTime);
-		transform.Translate(Vector3.right * hAxis * speed * Time.deltaTime);
+		Rigidbody.AddForce(Vector3.forward * vAxis * speed * Time.deltaTime);
+		Rigidbody.AddForce(Vector3.right * hAxis * speed * Time.deltaTime);
 	}
 }
