@@ -1705,7 +1705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 440718, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 440718, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
       propertyPath: m_LocalScale.x
@@ -2120,8 +2120,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417586355}
-  - {fileID: 2117346799}
   - {fileID: 2084542334}
+  - {fileID: 2117346799}
   m_Father: {fileID: 1376071831}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3714,7 +3714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 440718, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 440718, guid: 6488b6e6bbe8a9c4585b531a71d8211c, type: 3}
       propertyPath: m_LocalScale.x
@@ -4152,20 +4152,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056556153}
   m_CullTransparentMesh: 0
---- !u!114 &2079187073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670619461490019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53dd61a3115829478bcfd1fd89a688c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSpeed: 20
-  rotateSpeed: 100
 --- !u!143 &2079187074
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6671,8 +6657,8 @@ GameObject:
   - component: {fileID: 4774479792766741}
   - component: {fileID: 95291736764271647}
   - component: {fileID: 2079187074}
-  - component: {fileID: 2079187073}
   - component: {fileID: 1670619461490020}
+  - component: {fileID: 1670619461490021}
   m_Layer: 0
   m_Name: TwoHandsSword01
   m_TagString: Untagged
@@ -6694,6 +6680,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraBody: {fileID: 963194228}
   mouseSensitivity: 100
+--- !u!114 &1670619461490021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670619461490019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a160618caad6247aa4dc44f3db4f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 2
+  rotateSpeed: 2
 --- !u!1 &1671486842047125
 GameObject:
   m_ObjectHideFlags: 0
