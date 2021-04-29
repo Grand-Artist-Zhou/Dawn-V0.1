@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShuangShouJianAbility : MonoBehaviour
+public class ShuangShouJianAbility : BaseAbility
 {
     private CharacterController CC;
     private LineRenderer LR;
