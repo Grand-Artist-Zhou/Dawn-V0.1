@@ -4,63 +4,73 @@ using UnityEngine;
 
 public class ShuangShouJianAbility : BaseAbility
 {
-    private CharacterController CC;
-    private LineRenderer LR;
+    private CharacterController cc;
+    private LineRenderer lr;
+	private PlayerStats ps;
 
-    public float heroLevel;
-
-    public Transform hookBody;
-    private float coolDownStartTimeQ;
-    private bool allowQ = true;
-    public float skillQCoolDownTime;
-    public float hookLength = 5;
+	//public Transform hookBody;
+	public float hookLength = 5;
+	public Transform hookBody;
 
     // Start is called before the first frame update
     void Start()
     {
-        CC = GetComponent<CharacterController>();
-        LR = GetComponent<LineRenderer>();
-    }
+        cc = GetComponent<CharacterController>();
+        lr = GetComponent<LineRenderer>();
+		ps = GetComponent<PlayerStats>();
+	}
 
     // Update is called once per frame
     void Update()
-    {
-        heroLevel = GetComponent<PlayerStats>().level;
+	{
+		UseSkillQ();
+	}
 
-        if (Input.GetKeyDown(KeyCode.Q) && allowQ)
+	// Ability Q
+	private void UseSkillQ()
+	{
+		if (Input.GetKeyDown(KeyCode.Q) && allowQ)
 		{
-            // Draw the hook line        
-            LR.positionCount = 2;
-            LR.SetPosition(0, hookBody.position);
-            LR.SetPosition(1, hookBody.position + transform.forward * hookLength * heroLevel);
+			float heroLevel = ps.level;
 
-           /* LR.startColor = Color.blue;
-            LR.endColor = Color.blue;*/
+			// Draw the hook line        
+			lr.positionCount = 2;
+			lr.SetPosition(0, hookBody.position);
+			lr.SetPosition(1, hookBody.position + transform.forward * hookLength * heroLevel);
 
-            Invoke("DisableLineRenderer", 1);
+			/* LR.startColor = Color.blue;
+			 LR.endColor = Color.blue;*/
 
-            // Set the condition when hook an object
-            if (true)
+			Invoke("DisableLineRenderer", 1);
+
+			// Set the condition when hook an object
+			if (true)
 			{
-                Invoke("MoveWithHook", 1);
-            }
+				Invoke("MoveWithHook", 1);
+			}
 
-            coolDownStartTimeQ = Time.time;
-            allowQ = false;
+			StartTimeQ = Time.time;
+			allowQ = false;
 		}
 
-		if (Time.time - coolDownStartTimeQ >= skillQCoolDownTime)
+		if (Time.time - StartTimeQ >= SkillQCD)
 		{
-            allowQ = true;
-        }
-    }
+			allowQ = true;
+		}
+	}
 
-    private void DisableLineRenderer()
+	//-----------------------------------------------------------------------------------//
+	//-----------------------------------------------------------------------------------//
+	//------------------------------------ Helper methods -------------------------------//
+	//-----------------------------------------------------------------------------------//
+	//-----------------------------------------------------------------------------------//
+
+	private void DisableLineRenderer()
     {
-        LR.positionCount = 0;
+        lr.positionCount = 0;
     }
     private void MoveWithHook()
     {
-        CC.Move(transform.forward * hookLength);
+        cc.Move(transform.forward * hookLength);
     }
 }
