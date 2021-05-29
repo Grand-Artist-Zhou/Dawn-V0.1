@@ -10,7 +10,7 @@ public class SkillPanelBehaviour : MonoBehaviour
     {
 		for (int i = 0; i < 5; i++)
 		{
-            transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<Image>().sprite =
+            transform.GetChild(i).GetChild(1).GetComponent<Image>().sprite =
                 GameObject.FindGameObjectWithTag("Player")
                 .transform.GetChild(0).GetComponent<HeroAssets>().UIAssets[i];
         }

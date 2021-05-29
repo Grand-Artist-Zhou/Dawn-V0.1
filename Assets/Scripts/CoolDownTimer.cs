@@ -15,25 +15,26 @@ public class CoolDownTimer : MonoBehaviour
     private void Start()
     {
         timerIsRunning = true;
-        skillName = GetComponentInParent<Transform>().GetComponentInParent<Transform>().name;
-		if (name == "SkillQ")
+        skillName = transform.parent.name;
+    
+		if (skillName == "SkillQ")
 		{
             cdCycle = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseAbility>().SkillQCD;
             Debug.Log(cdCycle);
 		}
-		else if (name == "SkillW")
+		else if (skillName == "SkillW")
 		{
             cdCycle = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseAbility>().SkillWCD;
         }
-        else if (name == "SkillE")
+        else if (skillName == "SkillE")
         {
             cdCycle = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseAbility>().SkillECD;
         }
-        else if (name == "SkillR")
+        else if (skillName == "SkillR")
         {
             cdCycle = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseAbility>().SkillRCD;
         }
-        else if (name == "SkillUlt")
+        else if (skillName == "SkillUlt")
         {
             cdCycle = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseAbility>().SkillUltCD;
         }
