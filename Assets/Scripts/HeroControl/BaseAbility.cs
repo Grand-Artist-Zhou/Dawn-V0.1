@@ -10,11 +10,11 @@ public class BaseAbility : MonoBehaviour
     public float SkillRCD;
     public float SkillUltCD;
 
-    public float StartTimeQ;
-    public float StartTimeW;
-    public float StartTimeE;
-    public float StartTimeR;
-    public float StartTimeUlt;
+    protected float StartTimeQ;
+    protected float StartTimeW;
+    protected float StartTimeE;
+    protected float StartTimeR;
+    protected float StartTimeUlt;
 
     public bool allowQ = true;
     public bool allowW = true;

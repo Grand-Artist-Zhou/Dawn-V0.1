@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShuangShouJianAbility : BaseAbility
+public class DanShouJianAbility : BaseAbility
 {
     private CharacterController cc;
     private LineRenderer lr;
